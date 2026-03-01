@@ -1,0 +1,20 @@
+# System Requirements
+# -------------------
+# Node.js >= 18.x
+# npm >= 9.x
+# PostgreSQL >= 14.x
+#
+# Getting Started
+# ---------------
+# 1. Install PostgreSQL and create a database: blogg_cms
+# 2. Copy .env.example to .env and fill in your values
+# 3. npm install           (installs all workspaces)
+# 4. cd directus && npx create-directus-project .  (choose PostgreSQL)
+# 5. npm run dev            (starts Directus, server, and client concurrently)
+#
+# Stack
+# -----
+# Frontend:  Vite + React, Tailwind CSS, React Router
+# Backend:   Node.js, Express
+# CMS:       Directus (headless)
+# Database:  PostgreSQL

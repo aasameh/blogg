@@ -1,0 +1,25 @@
+{
+  "name": "blogg",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A React blog application with Tailwind CSS, Node.js backend, and Directus CMS",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently --names \"directus,server,client\" -c \"magenta,blue,green\" \"npm run dev:directus\" \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "npm run dev --workspace=client",
+    "dev:server": "npm run dev --workspace=server",
+    "dev:directus": "cd directus && npx directus start",
+    "build": "npm run build --workspace=client",
+    "start": "npm run start --workspace=server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
