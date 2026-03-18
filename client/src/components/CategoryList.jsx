@@ -6,9 +6,9 @@ const CategoryList = () => {
 
     if (loading) {
         return (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-col gap-3">
                 {[...Array(4)].map((_, i) => (
-                    <div key={i} className="h-8 w-20 bg-gray-200 rounded-full animate-pulse" />
+                    <div key={i} className="h-10 w-full bg-primary-100 border-2 border-primary-900" />
                 ))}
             </div>
         );
@@ -17,16 +17,20 @@ const CategoryList = () => {
     if (error || categories.length === 0) return null;
 
     return (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col gap-3">
             {categories.map((cat) => (
                 <Link
                     key={cat.id}
                     to={`/category/${cat.slug}`}
-                    className="px-4 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium
-            text-gray-700 hover:bg-primary-50 hover:text-primary-600 hover:border-primary-200
-            transition-colors"
+                    className="group flex flex-col px-4 py-3 bg-[var(--color-beige-bg)] border-2 border-primary-900 
+            text-[14px] font-bold font-mono uppercase tracking-widest text-primary-900 
+            hover:bg-primary-900 hover:text-white transition-colors relative overflow-hidden"
                 >
-                    {cat.name}
+                    <span className="relative z-10 flex justify-between items-center w-full">
+                        <span>{cat.name}</span>
+                        <span className="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                    </span>
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[var(--color-accent)] z-20 group-hover:w-2 transition-all"></div>
                 </Link>
             ))}
         </div>

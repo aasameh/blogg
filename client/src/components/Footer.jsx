@@ -6,11 +6,10 @@ const Footer = () => {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="text-center md:text-left">
-                        <span className="text-xl font-bold text-white">Blogg</span>
-                        <p className="text-sm mt-1">A modern blog powered by Directus CMS</p>
+                        <span className="text-xl font-bold text-white">Selvedge</span>
                     </div>
                     <div className="text-sm">
-                        &copy; {currentYear} Blogg. All rights reserved.
+                        &copy; {currentYear} Selvedge. All rights reserved.
                     </div>
                 </div>
             </div>
