@@ -25,10 +25,10 @@ const Header = () => {
             
             {/* Top Left: Menu / Index */}
             <div className="fixed top-4 left-4 z-50 mix-blend-difference text-white">
-                <div className="font-mono text-[9px] tracking-[0.2em] mb-1 opacity-70">[SYS.NAV.01]</div>
+                <div className="font-mono text-[11px] tracking-[0.2em] mb-1 opacity-70">[SYS.NAV.01]</div>
                 <button 
                     onClick={() => setIsMenuOpen(true)}
-                    className="font-sans font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black px-2 py-1 -mx-2 transition-colors text-left"
+                    className="font-sans font-bold text-sm md:text-base uppercase tracking-widest hover:bg-white hover:text-black px-2 py-1 -mx-2 transition-colors text-left"
                 >
                     INPUT // MENU
                 </button>
@@ -36,10 +36,10 @@ const Header = () => {
 
             {/* Top Right: Search */}
             <div className="fixed top-4 right-4 z-50 mix-blend-difference text-white text-right">
-                <div className="font-mono text-[9px] tracking-[0.2em] mb-1 opacity-70">[OP.SEARCH]</div>
+                <div className="font-mono text-[11px] tracking-[0.2em] mb-1 opacity-70">[OP.SEARCH]</div>
                 <button 
                     onClick={() => setIsMenuOpen(true)}
-                    className="font-sans font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black px-2 py-1 -mx-2 transition-colors"
+                    className="font-sans font-bold text-sm md:text-base uppercase tracking-widest hover:bg-white hover:text-black px-2 py-1 -mx-2 transition-colors"
                 >
                     QUERY
                 </button>
@@ -50,7 +50,7 @@ const Header = () => {
                 <div className="font-serif font-black text-4xl leading-none tracking-widest transform scale-x-125 origin-right">
                     t h r d s
                 </div>
-                <div className="font-mono text-[9px] tracking-[0.3em] mt-2 opacity-50">v.0.0.1_BETA</div>
+                <div className="font-mono text-[11px] tracking-[0.3em] mt-2 opacity-50">v.0.0.1_BETA</div>
             </div>
 
 
@@ -80,35 +80,35 @@ const Header = () => {
                     </div>
 
                     <div className="w-full md:w-1/2 z-10 p-4">
-                        <div className="font-mono text-[10px] tracking-[0.2em] mb-4 text-[#888888]">[EXEC.SEARCH]</div>
+                        <div className="font-mono text-xs tracking-[0.2em] mb-4 text-[#888888]">[EXEC.SEARCH]</div>
                         <form onSubmit={handleSearchSubmit} className="flex border-b-2 border-white pb-2">
                             <input
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="ENTER QUERY..."
-                                className="w-full bg-transparent font-sans text-2xl font-bold uppercase placeholder:text-[#444444] focus:outline-none focus:text-[var(--color-accent)]"
+                                className="w-full bg-transparent font-sans text-3xl font-bold uppercase placeholder:text-[#444444] focus:outline-none focus:text-[var(--color-accent)]"
                                 autoFocus={isMenuOpen}
                             />
                             <button type="submit" className="text-white hover:text-[var(--color-accent)]">
-                                <FiSearch size={24} />
+                                <FiSearch size={28} />
                             </button>
                         </form>
                     </div>
 
                     <div className="w-full md:w-1/2 z-10 p-4 md:pl-24 mt-12 md:mt-0 flex flex-col gap-6">
-                        <div className="font-mono text-[10px] tracking-[0.2em] text-[var(--color-accent)]">[NAV_LINKS]</div>
-                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="font-serif text-5xl font-black uppercase hover:italic hover:text-[var(--color-accent)] transition-all">INDEX</Link>
-                        <Link to="/search" onClick={() => setIsMenuOpen(false)} className="font-serif text-5xl font-black uppercase hover:italic hover:text-[var(--color-accent)] transition-all">SEARCH</Link>
+                        <div className="font-mono text-xs tracking-[0.2em] text-[var(--color-accent)]">[NAV_LINKS]</div>
+                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="font-serif text-6xl font-black uppercase hover:italic hover:text-[var(--color-accent)] transition-all">INDEX</Link>
+                        <Link to="/search" onClick={() => setIsMenuOpen(false)} className="font-serif text-6xl font-black uppercase hover:italic hover:text-[var(--color-accent)] transition-all">SEARCH</Link>
                         
-                        <div className="mt-8 pt-8 border-t border-[#333333] flex flex-col gap-2">
+                        <div className="mt-12 pt-8 border-t border-[#333333] flex flex-col gap-3">
                             {user ? (
                                 <>
-                                    <div className="font-mono text-xs">LOGGED_IN: {user.username}</div>
-                                    <button onClick={() => { logout(); setIsMenuOpen(false); }} className="text-left font-mono text-xs hover:text-[var(--color-accent)]">[LOGOUT]</button>
+                                    <div className="font-mono text-sm">LOGGED_IN: {user.username}</div>
+                                    <button onClick={() => { logout(); setIsMenuOpen(false); }} className="text-left font-mono text-sm hover:text-[var(--color-accent)]">[LOGOUT]</button>
                                 </>
                             ) : (
-                                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="font-mono text-xs hover:text-[var(--color-accent)]">[AUTH.LOGIN]</Link>
+                                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="font-mono text-sm hover:text-[var(--color-accent)]">[AUTH.LOGIN]</Link>
                             )}
                         </div>
                     </div>

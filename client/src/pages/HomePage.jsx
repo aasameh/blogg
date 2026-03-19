@@ -12,11 +12,11 @@ const HomePage = () => {
             <title>thrds /// index</title>
             
             {/* HERO SECTION - 12 Column Asymmetrical */}
-            <section className="relative w-full pt-32 pb-24 px-4 sm:px-8 grid grid-cols-12 gap-4 items-center">
+            <section className="relative w-full pt-32 pb-8 px-4 sm:px-8 grid grid-cols-12 gap-4 items-center">
                 {/* Massive Typography spanning columns */}
                 <div className="col-span-12 md:col-span-9 md:col-start-1 z-10 relative">
-                    <div className="absolute -top-12 left-2 text-[10px] font-mono text-[var(--color-accent)] tracking-[0.3em] font-normal">[HERO.BLOCK.01]</div>
-                    <h1 className="text-[15vw] leading-[0.8] font-serif font-black uppercase tracking-tighter mix-blend-difference text-black">
+                    <div className="absolute -top-12 left-2 text-xs font-mono text-[var(--color-accent)] tracking-[0.3em] font-normal">[HERO.BLOCK.01]</div>
+                    <h1 className="text-[15vw] leading-[0.8] font-serif font-black uppercase tracking-tighter mix-blend-difference text-white">
                         t h <span className="italic text-[#00FFFF]">r</span> d s <br />
                         <span className="text-[8vw] leading-[0.8] block -mt-4">maga_zine</span>
                     </h1>
@@ -32,14 +32,14 @@ const HomePage = () => {
                             alt="Cairo Youth" 
                             className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-[1.2] transform scale-105 group-hover:scale-100 transition-transform duration-700"
                         />
-                        <div className="absolute top-2 right-2 bg-black text-white text-[9px] font-mono px-1 py-0.5 z-10">[ IMG.A_RAW ]</div>
+                        <div className="absolute top-2 right-2 bg-black text-white text-[11px] font-mono px-1 py-0.5 z-10">[ IMG.A_RAW ]</div>
                     </div>
                 </div>
 
                 {/* Floating Context Block */}
-                <div className="col-span-12 md:col-span-4 md:col-start-2 mt-12 md:mt-24 border-t border-black pt-4 relative">
+                <div className="col-span-12 md:col-span-4 md:col-start-2 mt-8 md:mt-12 border-t border-black pt-4 relative">
                     <div className="absolute right-0 top-0 w-2 h-2 border-r border-t border-[var(--color-accent)]"></div>
-                    <p className="font-mono text-[11px] uppercase tracking-wider leading-relaxed text-gray-800">
+                    <p className="font-mono text-[13px] uppercase tracking-wider leading-relaxed text-gray-800">
                         Documenting the fabric of Egypt.<br />
                         From traditional local craftsmanship to the forefront of contemporary Cairo style.<br />
                         <span className="text-[var(--color-accent)] block mt-4 font-bold tracking-[0.2em]">[ ANTI—POLISHED ]</span>
@@ -48,7 +48,7 @@ const HomePage = () => {
             </section>
 
             {/* MARQUEE TENSION LINE */}
-            <div className="w-full border-y border-black bg-[#1a1a1a] text-white py-1.5 overflow-hidden flex mt-8 mb-24 relative">
+            <div className="w-full border-y border-black bg-[#1a1a1a] text-white py-1.5 overflow-hidden flex mt-8 mb-12 relative">
                 <div className="font-mono text-[10px] tracking-[0.3em] uppercase whitespace-nowrap opacity-80">
                     / NO LUXURY / RAW STREET / EDITORIAL CHAOS / CAIRO YOUTH / LOCAL CRAFT / INTERNET NATIVE / THE UNDERGROUND OVERGROUND / NO LUXURY / RAW STREET / EDITORIAL CHAOS / CAIRO YOUTH / LOCAL CRAFT / INTERNET NATIVE / THE UNDERGROUND OVERGROUND 
                 </div>
