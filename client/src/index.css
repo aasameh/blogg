@@ -2,32 +2,34 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  /* Deep Indigo Palette */
-  --color-primary-50: #eef2f6;
-  --color-primary-100: #d5dfeb;
-  --color-primary-200: #b0c5d9;
-  --color-primary-300: #81a2c1;
-  --color-primary-400: #577fa6;
-  --color-primary-500: #3b638c;
-  --color-primary-600: #2c4d73;
-  --color-primary-700: #243e5c;
-  --color-primary-800: #1f354d;
-  --color-primary-900: #162a45; /* True Indigo */
+  /* Brutalist Monochrome Palette */
+  --color-primary-50: #f7f7f7;
+  --color-primary-100: #e6e6e6;
+  --color-primary-200: #cccccc;
+  --color-primary-300: #b3b3b3;
+  --color-primary-400: #999999;
+  --color-primary-500: #808080;
+  --color-primary-600: #666666;
+  --color-primary-700: #4d4d4d;
+  --color-primary-800: #333333;
+  --color-primary-900: #000000;
 
-  /* Redline Accent */
-  --color-accent: #cc3333;
+  /* Subtle Deep Red Accent */
+  --color-accent: #B90E0A;
 
-  /* Neutrals: Ecru/Canvas */
-  --color-beige-bg: #f5f0e6;
-  --color-beige-text: #1a1a1a;
+  /* Neutrals: Absolute */
+  --color-beige-bg: #ffffff;
+  --color-beige-text: #000000;
 
-  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Rokkitt', 'Playfair Display', serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'Helvetica Neue', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Helvetica Neue', 'Arial', sans-serif; /* Anti-serif, raw brutalism */
+  --font-mono: 'Space Mono', 'IBM Plex Mono', monospace;
 }
 
 body {
-  @apply bg-[var(--color-beige-bg)] text-[var(--color-beige-text)] font-sans antialiased;
+  @apply bg-[var(--color-beige-bg)] text-[var(--color-beige-text)] font-sans antialiased overflow-x-hidden;
+  /* Faint 12-column drafting lines */
+  background-image: repeating-linear-gradient(to right, transparent, transparent calc(100vw / 12 - 1px), #eaeaeb calc(100vw / 12 - 1px), #eaeaeb calc(100vw / 12));
 }
 
 h1, h2, h3, h4, h5, h6, .font-serif {

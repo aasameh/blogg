@@ -17,60 +17,36 @@ const Pagination = ({ meta, onPageChange }) => {
     }
 
     return (
-        <nav className="flex items-center justify-center gap-2 mt-8 font-mono">
+        <nav className="w-full flex items-center justify-between mt-8 font-mono border-y border-black py-2">
             <button
                 onClick={() => onPageChange(page - 1)}
                 disabled={page <= 1}
-                className="px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary-900 bg-white border-2 border-primary-900 
-          hover:bg-primary-900 hover:text-white disabled:opacity-30 disabled:hover:bg-white disabled:hover:text-primary-900 disabled:cursor-not-allowed transition-colors"
+                className="text-[10px] uppercase tracking-[0.3em] font-bold text-black hover:text-[var(--color-accent)] disabled:opacity-20 transition-colors"
+                title="PREV[PG]"
             >
-                Prev
+                [ {"<"} ]
             </button>
-
-            {start > 1 && (
-                <>
+            <div className="flex gap-4">
+                {pages.map((p) => (
                     <button
-                        onClick={() => onPageChange(1)}
-                        className="px-4 py-2 text-xs font-bold text-primary-900 bg-white border-2 border-primary-900 hover:bg-primary-900 hover:text-white transition-colors"
+                        key={p}
+                        onClick={() => onPageChange(p)}
+                        className={`text-[10px] tracking-[0.2em] font-bold px-2 py-1 ${p === page
+                                ? 'bg-black text-white'
+                                : 'text-black hover:bg-gray-200'
+                            }`}
                     >
-                        1
+                        {p < 10 ? `0${p}` : p}
                     </button>
-                    {start > 2 && <span className="px-2 text-primary-400 font-bold">...</span>}
-                </>
-            )}
-
-            {pages.map((p) => (
-                <button
-                    key={p}
-                    onClick={() => onPageChange(p)}
-                    className={`px-4 py-2 text-xs font-bold border-2 transition-colors ${p === page
-                            ? 'bg-primary-900 text-white border-primary-900'
-                            : 'text-primary-900 bg-white border-primary-900 hover:bg-primary-100'
-                        }`}
-                >
-                    {p}
-                </button>
-            ))}
-
-            {end < totalPages && (
-                <>
-                    {end < totalPages - 1 && <span className="px-2 text-primary-400 font-bold">...</span>}
-                    <button
-                        onClick={() => onPageChange(totalPages)}
-                        className="px-4 py-2 text-xs font-bold text-primary-900 bg-white border-2 border-primary-900 hover:bg-primary-900 hover:text-white transition-colors"
-                    >
-                        {totalPages}
-                    </button>
-                </>
-            )}
-
+                ))}
+            </div>
             <button
                 onClick={() => onPageChange(page + 1)}
                 disabled={page >= totalPages}
-                className="px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary-900 bg-white border-2 border-primary-900 
-          hover:bg-primary-900 hover:text-white disabled:opacity-30 disabled:hover:bg-white disabled:hover:text-primary-900 disabled:cursor-not-allowed transition-colors"
+                className="text-[10px] uppercase tracking-[0.3em] font-bold text-black hover:text-[var(--color-accent)] disabled:opacity-20 transition-colors"
+                title="NEXT[PG]"
             >
-                Next
+                [ {">"} ]
             </button>
         </nav>
     );

@@ -21,147 +21,97 @@ const Header = () => {
 
     return (
         <>
-            <header className="sticky top-0 z-50 bg-[var(--color-beige-bg)] border-b-2 border-primary-900 shadow-sm relative pt-1 border-t-[6px] border-t-primary-900">
-                {/* Thin internal redline accent under the main top border */}
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-[var(--color-accent)] opacity-90" />
+            {/* FLOATING CORNER ELEMENTS */}
+            
+            {/* Top Left: Menu / Index */}
+            <div className="fixed top-4 left-4 z-50 mix-blend-difference text-white">
+                <div className="font-mono text-[9px] tracking-[0.2em] mb-1 opacity-70">[SYS.NAV.01]</div>
+                <button 
+                    onClick={() => setIsMenuOpen(true)}
+                    className="font-sans font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black px-2 py-1 -mx-2 transition-colors text-left"
+                >
+                    INPUT // MENU
+                </button>
+            </div>
 
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-20">
-                        {/* Left: Menu Button */}
-                        <div className="w-1/3 flex justify-start">
-                            <button
-                                onClick={() => setIsMenuOpen(true)}
-                                className="p-2 -ml-2 text-primary-900 hover:text-[var(--color-accent)] transition-colors focus:outline-none"
-                                aria-label="Open menu"
-                            >
-                                <FiMenu size={28} strokeWidth={2.5} />
-                            </button>
-                        </div>
+            {/* Top Right: Search */}
+            <div className="fixed top-4 right-4 z-50 mix-blend-difference text-white text-right">
+                <div className="font-mono text-[9px] tracking-[0.2em] mb-1 opacity-70">[OP.SEARCH]</div>
+                <button 
+                    onClick={() => setIsMenuOpen(true)}
+                    className="font-sans font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black px-2 py-1 -mx-2 transition-colors"
+                >
+                    QUERY
+                </button>
+            </div>
 
-                        {/* Center: Logo */}
-                        <div className="w-1/3 flex justify-center">
-                            <Link to="/" className="flex items-center group">
-                                <span className="text-4xl font-serif font-black text-primary-900 tracking-tight uppercase group-hover:text-[var(--color-accent)] transition-colors">
-                                    Selvedge
-                                </span>
-                            </Link>
-                        </div>
+            {/* Bottom Right: Floating Branding */}
+            <div className="fixed bottom-4 right-4 z-50 mix-blend-difference text-white text-right pointer-events-none hidden md:block">
+                <div className="font-serif font-black text-4xl leading-none tracking-widest transform scale-x-125 origin-right">
+                    t h r d s
+                </div>
+                <div className="font-mono text-[9px] tracking-[0.3em] mt-2 opacity-50">v.0.0.1_BETA</div>
+            </div>
 
-                        {/* Right: Search Button */}
-                        <div className="w-1/3 flex justify-end">
-                            <button
-                                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                                className="p-2 -mr-2 text-primary-900 hover:text-[var(--color-accent)] transition-colors focus:outline-none"
-                                aria-label="Toggle search"
-                            >
-                                {isSearchOpen ? <FiX size={26} strokeWidth={2.5} /> : <FiSearch size={26} strokeWidth={2.5} />}
-                            </button>
-                        </div>
-                    </div>
+
+            {/* CHAOTIC OVERLAY MENU */}
+            <div
+                className={`fixed inset-0 bg-[#0a0a0a] text-white z-[60] transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                }`}
+            >
+                {/* Background Grid Lines for Menu */}
+                <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(to right, transparent, transparent calc(100vw / 12 - 1px), #ffffff calc(100vw / 12 - 1px), #ffffff calc(100vw / 12))' }} />
+
+                <div className="absolute top-4 right-4 z-50">
+                    <button
+                        onClick={() => setIsMenuOpen(false)}
+                        className="font-mono text-sm tracking-widest hover:text-[var(--color-accent)] text-white"
+                    >
+                        [CLOSE_X]
+                    </button>
                 </div>
 
-                {/* Inline Search Bar (Expands downwards) */}
-                {isSearchOpen && (
-                    <div className="absolute top-full left-0 w-full bg-[var(--color-beige-bg)] border-b-2 border-primary-900 py-4 px-4 shadow-md z-40">
-                        <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto relative flex items-center">
+                <div className="h-full w-full flex flex-col md:flex-row p-4 md:p-12 items-center justify-center relative">
+                    
+                    {/* Giant background text */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[15vw] font-serif font-black text-[#1a1a1a] whitespace-nowrap pointer-events-none z-0">
+                        DIRECTORY
+                    </div>
+
+                    <div className="w-full md:w-1/2 z-10 p-4">
+                        <div className="font-mono text-[10px] tracking-[0.2em] mb-4 text-[#888888]">[EXEC.SEARCH]</div>
+                        <form onSubmit={handleSearchSubmit} className="flex border-b-2 border-white pb-2">
                             <input
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="SEARCH ARCHIVE..."
-                                className="w-full py-3 px-4 bg-white border-2 border-primary-900 font-mono text-sm placeholder:text-gray-400 focus:outline-none focus:ring-0 focus:border-[var(--color-accent)] transition-colors rounded-none"
-                                autoFocus
+                                placeholder="ENTER QUERY..."
+                                className="w-full bg-transparent font-sans text-2xl font-bold uppercase placeholder:text-[#444444] focus:outline-none focus:text-[var(--color-accent)]"
+                                autoFocus={isMenuOpen}
                             />
-                            <button type="submit" className="absolute right-3 p-2 text-primary-900 hover:text-[var(--color-accent)]">
-                                <FiSearch size={20} strokeWidth={3} />
+                            <button type="submit" className="text-white hover:text-[var(--color-accent)]">
+                                <FiSearch size={24} />
                             </button>
                         </form>
                     </div>
-                )}
-            </header>
 
-            {/* Sidebar Overlay */}
-            <div
-                className={`fixed inset-0 bg-[var(--color-primary-900)]/40 z-[60] transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                    }`}
-                onClick={() => setIsMenuOpen(false)}
-            />
-
-            {/* Sidebar Menu */}
-            <div
-                className={`fixed inset-y-0 left-0 w-80 bg-[var(--color-beige-bg)] border-r-4 border-primary-900 z-[70] transform transition-transform duration-300 ease-in-out flex flex-col ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
-            >
-                <div className="absolute right-[-4px] top-0 bottom-0 w-[2px] bg-[var(--color-accent)]" />
-
-                <div className="p-6 border-b border-primary-200 bg-white flex justify-between items-center">
-                    <span className="font-serif font-black text-2xl text-primary-900 uppercase tracking-tight">Index</span>
-                    <button
-                        onClick={() => setIsMenuOpen(false)}
-                        className="p-2 -mr-2 text-primary-900 hover:text-[var(--color-accent)]"
-                    >
-                        <FiX size={26} strokeWidth={2.5} />
-                    </button>
-                </div>
-
-                <div className="flex-1 overflow-y-auto py-8 px-8">
-                    <nav className="flex flex-col space-y-10">
-                        <div>
-                            <span className="text-xs font-mono text-gray-500 mb-5 block tracking-widest uppercase">/// Navigation</span>
-                            <div className="flex flex-col space-y-4">
-                                <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-xl font-bold font-serif text-primary-900 hover:text-[var(--color-accent)] transition-colors flex items-center gap-3">
-                                    Front Page
-                                </Link>
-                                <Link to="/search" onClick={() => setIsMenuOpen(false)} className="text-xl font-bold font-serif text-primary-900 hover:text-[var(--color-accent)] transition-colors flex items-center gap-3">
-                                    Search Archive
-                                </Link>
-                            </div>
+                    <div className="w-full md:w-1/2 z-10 p-4 md:pl-24 mt-12 md:mt-0 flex flex-col gap-6">
+                        <div className="font-mono text-[10px] tracking-[0.2em] text-[var(--color-accent)]">[NAV_LINKS]</div>
+                        <Link to="/" onClick={() => setIsMenuOpen(false)} className="font-serif text-5xl font-black uppercase hover:italic hover:text-[var(--color-accent)] transition-all">INDEX</Link>
+                        <Link to="/search" onClick={() => setIsMenuOpen(false)} className="font-serif text-5xl font-black uppercase hover:italic hover:text-[var(--color-accent)] transition-all">SEARCH</Link>
+                        
+                        <div className="mt-8 pt-8 border-t border-[#333333] flex flex-col gap-2">
+                            {user ? (
+                                <>
+                                    <div className="font-mono text-xs">LOGGED_IN: {user.username}</div>
+                                    <button onClick={() => { logout(); setIsMenuOpen(false); }} className="text-left font-mono text-xs hover:text-[var(--color-accent)]">[LOGOUT]</button>
+                                </>
+                            ) : (
+                                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="font-mono text-xs hover:text-[var(--color-accent)]">[AUTH.LOGIN]</Link>
+                            )}
                         </div>
-
-                        <div>
-                            <span className="text-xs font-mono text-gray-500 mb-5 block tracking-widest uppercase">/// Common Threads</span>
-                            <div className="flex flex-col space-y-4">
-                                <Link to="/category/selvedge" onClick={() => setIsMenuOpen(false)} className="text-lg text-primary-800 hover:text-[var(--color-accent)] transition-colors">
-                                    Selvedge Denim
-                                </Link>
-                                <Link to="/category/boots" onClick={() => setIsMenuOpen(false)} className="text-lg text-primary-800 hover:text-[var(--color-accent)] transition-colors">
-                                    Service Boots
-                                </Link>
-                                <Link to="/category/leather" onClick={() => setIsMenuOpen(false)} className="text-lg text-primary-800 hover:text-[var(--color-accent)] transition-colors">
-                                    Leather Goods
-                                </Link>
-                                <Link to="/category/heritage" onClick={() => setIsMenuOpen(false)} className="text-lg text-primary-800 hover:text-[var(--color-accent)] transition-colors">
-                                    Heritage Style
-                                </Link>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-
-                <div className="p-6 border-t-2 border-primary-900 bg-white">
-                    {user ? (
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-[var(--color-beige-bg)] border-2 border-primary-900 flex items-center justify-center">
-                                    <FiUser strokeWidth={2.5} className="text-primary-900" />
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-primary-900 uppercase tracking-wide">{user.firstName}</p>
-                                    <p className="text-[10px] font-mono text-[var(--color-accent)] tracking-widest font-bold">AUTHOR</p>
-                                </div>
-                            </div>
-                            <button onClick={() => { logout(); setIsMenuOpen(false); }} className="text-primary-400 hover:text-[var(--color-accent)] transition-colors" title="Sign out">
-                                <FiLogOut size={22} strokeWidth={2.5} />
-                            </button>
-                        </div>
-                    ) : (
-                        <Link
-                            to="/login"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="flex items-center justify-center gap-2 w-full py-3 border-2 border-primary-900 text-primary-900 font-bold hover:bg-primary-900 hover:text-white transition-colors uppercase tracking-widest text-sm font-mono"
-                        >
-                            <FiUser /> Contributor Login
-                        </Link>
-                    )}
+                    </div>
                 </div>
             </div>
         </>
